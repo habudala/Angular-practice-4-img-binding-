@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+	<title></title>
+</head>
+<body ng-controller="myController">
+
+	<div>
+		Name: {{ dragon.name}}
+	</div>
+	<div>
+		Occupation: {{ dragon.occupation}}
+	</div>
+
+
+
+	<!-- this will return a 404 error message... see proper method under bad example Reason btw: when dom loads, it tries to load the image from the path specified, but it's not a valid path.. {{WTF??}} the binding image is not then evaluated (Angular acts on loaded DOM already) After, however, one it's loaded, a second request is made to load the image, and by then the binding expression is evaluated so it loads. (two requests are made. first:fails second:goes through) -->
+<!-- 	<div>
+		<img src="{{dragon.image}}" style="height: 200px; width:350px;"/>
+	</div> -->
+	<!-- the alt bellow will load in case the image doesn't... (precaution) -->
+	<div>
+		<img ng-src="{{dragon.image}}" 
+		 alt="{{dragon.name + 'picture'}}"    
+		 style="height: 200px; width:350px;"/>
+
+	</div>
+
+		
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src=scripts/script.js></script>
+</body>
+</html>
